@@ -7,30 +7,29 @@
 </head>
 
 <body>
-    <div class="container">
-        <form id="form1">
-            <input type='file' id="imgInp"/><br>
-            <img id="imgView" src="#" alt="your image"/>
-        </form>
+    <div align="center">
+        <input type='file' id="imgInp"/><br><br>
+        <canvas id="myCanvas" width="600" height="400"></canvas><br><br>
+        <button id="resetBtn">Reset</button>
+
+        Marker size:
+        <select id="markerSize">
+            <option value="7">7</option>
+            <option value="9" selected="selected">9</option>
+            <option value="11">11</option>
+        </select>
+
+        Marker color:
+        <select id="markerColor">
+            <option value="black">Background</option>
+            <option value="white" selected="selected">Foreground</option>
+        </select>
+
+        <a id="download1"> Start1 </a>
+        <a id="download2"> Start2 </a>
     </div>
 </body>
 
 <script src="jquery-3.2.1.js"></script>
-<script>
-    function readURL(input) {
-        if (input.files && input.files[0]) {
-            var reader = new FileReader();
-
-            reader.onload = function (e) {
-                $('#imgView').attr('src', e.target.result);
-            };
-
-            reader.readAsDataURL(input.files[0]);
-        }
-    }
-
-    $("#imgInp").change(function(){
-        readURL(this);
-    });
-</script>
+<script src="index.js"></script>
 </html>

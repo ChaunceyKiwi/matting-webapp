@@ -1,4 +1,8 @@
-#imgView {
-    height: 400px;
-    width: 600px;
+#myCanvas {
+    border: 1px solid black;
+}
+
+#download {
+    cursor:pointer;
+    padding:3px;
 }
