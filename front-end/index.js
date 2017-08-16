@@ -68,21 +68,26 @@ $("#resetBtn").click(function() {
     ctx.clearRect(0, 0, ctx.canvas.width, ctx.canvas.height);
 });
 
-function downloadCanvas(link, canvasId, filename) {
-    if (canvasId == "originImg") {
-        link.href = originImage;
-        link.download = filename;
-    } else if (canvasId == "scribbleImg") {
-        link.href = document.getElementById("myCanvas").toDataURL();
-        link.download = filename;
-    }
-}
+// function downloadCanvas(link, canvasId, filename) {
+//     if (canvasId == "originImg") {
+//         link.href = originImage;
+//         link.download = filename;
+//     } else if (canvasId == "scribbleImg") {
+//         link.href = document.getElementById("myCanvas").toDataURL();
+//         link.download = filename;
+//     }
+// }
 
 document.getElementById("download1").addEventListener("click", function() {
-    downloadCanvas(this, "originImg", "origin.png");
+    $.post('/api/originImg', JSON.stringify(originImage), function(result) {
+        console.log(result);
+    });
 }, false);
 
 document.getElementById("download2").addEventListener("click", function() {
-    downloadCanvas(this, "scribbleImg", "scribble.png");
+    var scribbleImg = document.getElementById("myCanvas").toDataURL();
+    $.post('/api/scribbleImg', JSON.stringify(scribbleImg), function(result) {
+        console.log(result);
+    });
 }, false);
 
