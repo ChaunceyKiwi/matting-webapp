@@ -2,6 +2,7 @@ const express = require('express');
 const app = express();
 var bodyParser = require('body-parser');
 var fs = require('fs');
+var imgInfo = {};
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
@@ -20,11 +21,17 @@ app.get('/', getHtml);
 app.get('/style.css', function(request, response) {
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/css');
-    response.setHeader('Cache-Control', 'public, max-age=1800');
     fs.readFile('../front-end/style.css', function(err, data) {
         response.end(data);
     });
 });
+
+app.get('/getJob', function(request, response) {
+    response.statusCode = 200;
+    response.setHeader('Content-Type', 'text/css');
+    response.end(JSON.stringify(imgInfo));
+});
+
 
 app.get('/index.js', function(request, response) {
     response.statusCode = 200;
@@ -47,13 +54,13 @@ app.listen(3000, function () {
 });
 
 app.post('/api/originImg', function(request, response) {
-    console.log(request.body);
+    imgInfo.originImgData = request.body;
     response.statusCode = 200;
     response.end("Original image received!");
 });
 
 app.post('/api/scribbleImg', function(request, response) {
-    console.log(request.body);
+    imgInfo.scribbleImgData = request.body;
     response.statusCode = 200;
     response.end("Scribble image received!");
 });
