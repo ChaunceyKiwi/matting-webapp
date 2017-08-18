@@ -2,7 +2,8 @@ const express = require('express');
 const app = express();
 var bodyParser = require('body-parser');
 var fs = require('fs');
-var imgInfo = {};
+var originImgReady = false;
+var scribbleImgReady = false;
 
 app.use(bodyParser.json({limit: '50mb'}));
 app.use(bodyParser.urlencoded({limit: "50mb", extended: true, parameterLimit:50000}));
@@ -29,7 +30,13 @@ app.get('/style.css', function(request, response) {
 app.get('/getJob', function(request, response) {
     response.statusCode = 200;
     response.setHeader('Content-Type', 'text/css');
-    response.end(JSON.stringify(imgInfo));
+    if (originImgReady && scribbleImgReady) {
+        response.end("Ready");
+        originImgReady = false;
+        scribbleImgReady = false;
+    } else {
+        response.end("No Data Yet!");
+    }
 });
 
 
@@ -54,13 +61,23 @@ app.listen(3000, function () {
 });
 
 app.post('/api/originImg', function(request, response) {
-    imgInfo.originImgData = request.body;
+    var originImgData = Object.keys(request.body)[0].replace(/\s/g, '+').replace(/^data:image\/png;base64,/, "");
+    fs.writeFile("originImage.png", originImgData, 'base64', function(err) {
+        console.log(err);
+    });
+
     response.statusCode = 200;
+    originImgReady = true;
     response.end("Original image received!");
 });
 
 app.post('/api/scribbleImg', function(request, response) {
-    imgInfo.scribbleImgData = request.body;
+    var scribbleImgData = Object.keys(request.body)[0].replace(/\s/g, '+').replace(/^data:image\/png;base64,/, "");
+    fs.writeFile("scribbleImg.png", scribbleImgData, 'base64', function(err) {
+        console.log(err);
+    });
+
     response.statusCode = 200;
+    scribbleImgReady = true;
     response.end("Scribble image received!");
 });

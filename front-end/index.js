@@ -78,15 +78,19 @@ $("#resetBtn").click(function() {
 //     }
 // }
 
-document.getElementById("download1").addEventListener("click", function() {
-    $.post('/api/originImg', JSON.stringify(originImage), function(result) {
+// document.getElementById("download1").addEventListener("click", function() {
+//     $.post('/api/originImg', originImage, function(result) {
+//         console.log(result);
+//     });
+// }, false);
+
+document.getElementById("start").addEventListener("click", function() {
+    $.post('/api/originImg', originImage, function(result) {
         console.log(result);
     });
-}, false);
 
-document.getElementById("download2").addEventListener("click", function() {
     var scribbleImg = document.getElementById("myCanvas").toDataURL();
-    $.post('/api/scribbleImg', JSON.stringify(scribbleImg), function(result) {
+    $.post('/api/scribbleImg', scribbleImg, function(result) {
         console.log(result);
     });
 }, false);
