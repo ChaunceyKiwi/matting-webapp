@@ -62,9 +62,7 @@ app.listen(3000, function () {
 
 app.post('/api/originImg', function(request, response) {
     var originImgData = Object.keys(request.body)[0].replace(/\s/g, '+').replace(/^data:image\/png;base64,/, "");
-    fs.writeFile("originImage.png", originImgData, 'base64', function(err) {
-        console.log(err);
-    });
+    fs.writeFile("originImage.png", originImgData, 'base64', function(err) {});
 
     response.statusCode = 200;
     originImgReady = true;
@@ -73,11 +71,15 @@ app.post('/api/originImg', function(request, response) {
 
 app.post('/api/scribbleImg', function(request, response) {
     var scribbleImgData = Object.keys(request.body)[0].replace(/\s/g, '+').replace(/^data:image\/png;base64,/, "");
-    fs.writeFile("scribbleImg.png", scribbleImgData, 'base64', function(err) {
-        console.log(err);
-    });
+    fs.writeFile("scribbleImg.png", scribbleImgData, 'base64', function(err) {});
 
     response.statusCode = 200;
     scribbleImgReady = true;
     response.end("Scribble image received!");
+});
+
+app.post('/api/imgProcessed', function(request, response) {
+    response.statusCode = 200;
+    console.log(Object.keys(request.body)[0]);
+    response.end("Thank you!");
 });
