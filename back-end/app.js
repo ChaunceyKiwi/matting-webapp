@@ -82,7 +82,7 @@ app.post('/api/imgProcessed', function(request, response) {
     console.log(Object.keys(request.body)[0]);
     ableToShowResult = true;
     response.end("Thank you!");
-    io.emit('news', "Job done!");
+    io.emit('news', "Job is finished!");
 });
 
 app.get('/foreground.jpg', function(request, response) {

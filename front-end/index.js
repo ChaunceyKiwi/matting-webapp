@@ -2,7 +2,7 @@ var imageLoaded = 0;
 var lastX, lastY;
 var mousePressed = false;
 var input, ctx, myCanvas, originImage;
-
+var touchX, touchY;
 
 window.onload = function() {
     initialization();
@@ -47,6 +47,10 @@ function initialization() {
     myCanvas.mouseleave(function (e) {
         mousePressed = false;
     });
+
+    // React to touch events on the canvas
+    document.getElementById("myCanvas").addEventListener('touchstart', sketchpad_touchStart, false);
+    document.getElementById("myCanvas").addEventListener('touchmove', sketchpad_touchMove, false);
 }
 
 function Draw(x, y, isDown) {
@@ -61,6 +65,55 @@ function Draw(x, y, isDown) {
         ctx.stroke();
     }
     lastX = x; lastY = y;
+}
+
+function drawDot(x,y,size) {
+    // Let's use black by setting RGB values to 0, and 255 alpha (completely opaque)
+    r=0; g=0; b=0; a=255;
+
+    // Select a fill style
+    ctx.fillStyle = "rgba("+r+","+g+","+b+","+(a/255)+")";
+
+    // Draw a filled circle
+    ctx.beginPath();
+    ctx.arc(x, y, size, 0, Math.PI*2, true);
+    ctx.closePath();
+    ctx.fill();
+}
+
+function getTouchPos(e) {
+    if (!e)
+        var e = event;
+
+    if(e.touches) {
+        if (e.touches.length == 1) { // Only deal with one finger
+            var touch = e.touches[0]; // Get the information for finger #1
+            touchX=touch.pageX-touch.target.offsetLeft;
+            touchY=touch.pageY-touch.target.offsetTop;
+        }
+    }
+}
+
+// Draw something when a touch start is detected
+function sketchpad_touchStart() {
+    // Update the touch co-ordinates
+    getTouchPos();
+
+    Draw(touchX, touchY, false);
+
+    // Prevents an additional mousedown event being triggered
+    event.preventDefault();
+}
+
+// Draw something and prevent the default scrolling when touch movement is detected
+function sketchpad_touchMove(e) {
+    // Update the touch co-ordinates
+    getTouchPos(e);
+
+    Draw(touchX, touchY, true);
+
+    // Prevent a scrolling action as a result of this touchmove triggering.
+    event.preventDefault();
 }
 
 $("#resetBtn").click(function() {
@@ -79,3 +132,10 @@ document.getElementById("start").addEventListener("click", function() {
     });
 }, false);
 
+var socket = io.connect('http://40ad3033.ngrok.io/');
+socket.on('news', function (data) {
+    if (data == "Job is finished!") {
+        document.getElementById("foreground").src="foreground.jpg";
+        document.getElementById("background").src="background.jpg";
+    }
+});
