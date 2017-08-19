@@ -8,6 +8,7 @@
 
 <body>
     <div align="center">
+        <h1>Image Matting</h1>
         <input type='file' id="imgInp"/><br><br>
         <canvas id="myCanvas" width="600" height="400"></canvas><br><br>
         <button id="resetBtn">Reset</button>
@@ -25,10 +26,14 @@
             <option value="white" selected="selected">Foreground</option>
         </select>
 
-        <a id="start"> Start </a>
+        <a id="start"> Start </a> <br><br>
+
+        <img id="foreground" width="300" height="200">
+        <img id="background" width="300" height="200">
     </div>
 </body>
 
 <script src="jquery-3.2.1.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/2.0.3/socket.io.js"></script>
 <script src="index.js"></script>
 </html>

@@ -6,3 +6,7 @@
     cursor:pointer;
     padding:3px;
 }
+
+#front-ground, #back-ground {
+    border: 1px solid black;
+}
