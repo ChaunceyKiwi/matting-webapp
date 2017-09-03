@@ -5,8 +5,12 @@
 * Back-end
 * C style program
 
+## Requirements
+* Node.js
+* CMake
+
 ## Setup
-1. Install openCV library on your local machine, following the instructions on 
+1. Install openCV library on your local machine, following instructions on 
 http://docs.opencv.org/3.3.0/d7/d9f/tutorial_linux_install.html
 2. Install SuiteSparse.tar.gz from http://faculty.cse.tamu.edu/davis/suitesparse.html and unzip it to the directory `/matting-webapp/c-program`, run following instructions to install library:
   ```
