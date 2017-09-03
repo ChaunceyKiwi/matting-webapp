@@ -14,6 +14,7 @@ set(SOURCE_FILES
         ../src/SparseMatrixEquationSolver.cpp)
 
 include_directories(../include)
+include_directories(../SuiteSparse/include)
 
 add_executable(imageMatting ${SOURCE_FILES})
 
