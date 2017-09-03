@@ -132,7 +132,9 @@ document.getElementById("start").addEventListener("click", function() {
     });
 }, false);
 
-var socket = io.connect('http://40ad3033.ngrok.io/');
+/* TODO: modify socket to connect to a local or a remote IP address that runs server */
+var socket = io.connect('');
+
 socket.on('news', function (data) {
     if (data == "Job is finished!") {
         document.getElementById("foreground").src="foreground.jpg";
