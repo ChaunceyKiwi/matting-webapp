@@ -26,6 +26,7 @@ You can find local IP address by runnning `ifconfig | grep 192` on server
 ```
 cd /matting-webapp/c-program/make;
 cmake .;
+make;
 ./imageMatting;
 ```
 2. Run following instructions to start the Node.js server to perform user interaction
