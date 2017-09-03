@@ -22,17 +22,18 @@ You can find local IP address by runnning `ifconfig | grep 192` on server
 
   
 ## Server: build
-1. Run following instructions to start the cpp program to perform calculation:
+1. Run following instructions to start the Node.js server to perform user interaction
+```
+cd /matting-webapp/back-end;
+node app.js;
+```
+
+2. Run following instructions to start the cpp program to perform calculation:
 ```
 cd /matting-webapp/c-program/make;
 cmake .;
 make;
 ./imageMatting;
-```
-2. Run following instructions to start the Node.js server to perform user interaction
-```
-cd /matting-webapp/back-end;
-node app.js;
 ```
 
 ## Client: how to run
