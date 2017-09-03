@@ -1,4 +1,5 @@
 # Image Matting Webapp
+For more details about matting algorithm applied, check https://github.com/ChaunceyKiwi/imageMatting
 
 ## Structure
 * Front-end
