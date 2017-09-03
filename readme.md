@@ -42,5 +42,5 @@ make;
 ./imageMatting;
 ```
 
-## Client: how to run
-Follow instructions in the video: https://www.youtube.com/watch?v=uYu_CdfbREE
+## Demo for client
+Follow instructions in the video: https://www.youtube.com/watch?v=0mweR35C6nc
