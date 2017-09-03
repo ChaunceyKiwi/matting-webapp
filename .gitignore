@@ -6,3 +6,5 @@ c-program/https
 *.png
 
 *.jpg
+
+c-program/SuiteSparse/*
