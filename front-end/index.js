@@ -4,6 +4,10 @@ var mousePressed = false;
 var input, ctx, myCanvas, originImage;
 var touchX, touchY;
 
+/* TODO: modify socket to connect to a local or a remote IP 
+ * address and corresponding port number that runs server */
+var serverAddr = "localhost:3000"; /* e.g. 192.168.1.74:3000 */
+
 window.onload = function() {
     initialization();
     input.addEventListener("change", handleFiles, false);
@@ -132,8 +136,7 @@ document.getElementById("start").addEventListener("click", function() {
     });
 }, false);
 
-/* TODO: modify socket to connect to a local or a remote IP address that runs server */
-var socket = io.connect('');
+var socket = io.connect(serverAddr);
 
 socket.on('news', function (data) {
     if (data == "Job is finished!") {
