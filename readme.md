@@ -25,6 +25,7 @@ You can find local IP address by runnning `ifconfig | grep 192` on server
 1. Run following instructions to start the Node.js server to perform user interaction
 ```
 cd /matting-webapp/back-end;
+npm install;
 node app.js;
 ```
 
