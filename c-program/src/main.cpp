@@ -9,20 +9,8 @@
 #include "MattingPerformer.hpp"
 #include "ImagePrinter.hpp"
 
-// File path
-std::string path_prefix = "..";
-
-// std::string img_path = path_prefix + "/bmp/kid/kid.bmp";
-// std::string img_m_path = path_prefix + "/bmp/kid/kid_m.bmp";
-
-//std::string img_path = path_prefix + "/bmp/peacock/peacock.bmp";
-//std::string img_m_path = path_prefix + "/bmp/peacock/peacock_m.bmp";
-
-//std::string img_path = path_prefix + "/bmp/dandelion/dandelion.bmp";
-//std::string img_m_path = path_prefix + "/bmp/dandelion/dandelion_m.bmp";
-
-std::string img_path = "/Users/Chauncey/Workspace/matting-webapp/back-end/originImage.png";
-std::string img_m_path = "/Users/Chauncey/Workspace/matting-webapp/back-end/scribbleImg.png";
+std::string img_path = "../../back-end/originImage.png";
+std::string img_m_path = "../../back-end/scribbleImg.png";
 
 // Global variable
 double lambda = 100; // Weight of scribbled piexel obedience
