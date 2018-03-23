@@ -1,5 +1,5 @@
 # Image Matting Webapp
-For more details about matting algorithm applied, check https://github.com/ChaunceyKiwi/imageMatting
+For more details about matting algorithm applied, check [this repository](https://github.com/ChaunceyKiwi/imageMatting).
 
 ## Structure
 * Front-end
@@ -11,14 +11,14 @@ For more details about matting algorithm applied, check https://github.com/Chaun
 * CMake
 
 ## Setup
-1. Install openCV library on your local machine, following instructions on 
-http://docs.opencv.org/3.3.0/d7/d9f/tutorial_linux_install.html
-2. Install SuiteSparse.tar.gz from http://faculty.cse.tamu.edu/davis/suitesparse.html and unzip it to the directory `/matting-webapp/c-program`, run following instructions to install library:
+1. Install openCV library on your local machine, following instructions from [the official tutorial](http://docs.opencv.org/3.3.0/d7/d9f/tutorial_linux_install.html).
+
+2. Download SuiteSparse.tar.gz from [here](http://faculty.cse.tamu.edu/davis/suitesparse.html) and unzip it to the directory `/matting-webapp/c-program`, run following instructions to install library:
   ```
   cd /matting-webapp/c-program/SuiteSparse
   make library
   ```
-3. Open file in the path `/matting-webapp/front-end/index.js`, modify socket to connect to a local or a remote IP address and corresponding port number that runs server. 
+3. Open file in the path `/matting-webapp/front-end/index.js`, modify socket to connect to a local or remote IP address and corresponding port number that runs server. 
 ```
 You can find local IP address by runnning `ifconfig | grep 192` on server
 
@@ -27,14 +27,14 @@ You can find local IP address by runnning `ifconfig | grep 192` on server
 
   
 ## Server: build
-1. Run following instructions to start the Node.js server to perform user interaction
+1. Run following instructions to setup the Node.js server to perform user interaction:
 ```
 cd /matting-webapp/back-end;
 npm install;
 node app.js;
 ```
 
-2. Run following instructions to start the cpp program to perform calculation:
+2. Run following instructions to open the cpp program and perform calculation:
 ```
 cd /matting-webapp/c-program/make;
 cmake .;
@@ -43,4 +43,4 @@ make;
 ```
 
 ## Demo for client
-Follow instructions in the video: https://www.youtube.com/watch?v=0mweR35C6nc
+Follow instructions in this [youtube video](https://www.youtube.com/watch?v=0mweR35C6nc).
